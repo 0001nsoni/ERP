@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
 const facultySchema = new mongoose.Schema({
+   college: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "College",  // Reference to college
+    required: true
+  },
   name: {
     type: String,
     required: true,
@@ -42,5 +47,5 @@ const facultySchema = new mongoose.Schema({
   }
 });
 
-const Faculty = mongoose.model("Faculty", facultySchema);
-export default Faculty;
+const facultyModel = mongoose.model("Faculty", facultySchema);
+export default facultyModel;

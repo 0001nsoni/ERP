@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
 const noticeSchema = new mongoose.Schema({
+   college: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "College",  // Reference to college
+    required: true
+  },
   title: {
     type: String,
     required: true,

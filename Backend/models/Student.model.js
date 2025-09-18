@@ -1,6 +1,11 @@
 import mongoose from "mongoose";
 
 const studentSchema = new mongoose.Schema({
+   college: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "College",  // Reference to college
+    required: true
+  },
   name: {
     type: String,
     required: true,
@@ -38,8 +43,6 @@ const studentSchema = new mongoose.Schema({
     required: true,
     enum: ["Hostler", "Bus", "DayScholar"]
   },
-
-  // New fields for UG/PG and program details
   programLevel: {
     type: String,
     required: true,
@@ -48,7 +51,7 @@ const studentSchema = new mongoose.Schema({
   programName: {
     type: String,
     required: true,
-    // Example: "B.Tech in CSE", "B.Sc in IT", "M.Tech in AI", "MBA"
+    
   },
 
   createdAt: {
@@ -57,6 +60,6 @@ const studentSchema = new mongoose.Schema({
   }
 });
 
-const Student = mongoose.model("Student", studentSchema);
+const studentModel = mongoose.model("Student", studentSchema);
 
-export default Student;
+export default studentModel;
